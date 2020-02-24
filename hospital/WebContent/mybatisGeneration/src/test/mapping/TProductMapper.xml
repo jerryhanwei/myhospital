@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="test.IDao.TProductMapper" >
+  <resultMap id="BaseResultMap" type="test.domain.TProduct" >
+    <id column="t_product_id" property="tProductId" jdbcType="VARCHAR" />
+    <result column="t_product_name" property="tProductName" jdbcType="VARCHAR" />
+    <result column="t_product_price" property="tProductPrice" jdbcType="VARCHAR" />
+    <result column="t_product_num" property="tProductNum" jdbcType="VARCHAR" />
+    <result column="t_product_picUrl" property="tProductPicurl" jdbcType="VARCHAR" />
+    <result column="t_product_indate" property="tProductIndate" jdbcType="VARCHAR" />
+    <result column="t_product_outdate" property="tProductOutdate" jdbcType="VARCHAR" />
+    <result column="t_product_type" property="tProductType" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    t_product_id, t_product_name, t_product_price, t_product_num, t_product_picUrl, t_product_indate, 
+    t_product_outdate, t_product_type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_product
+    where t_product_id = #{tProductId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_product
+    where t_product_id = #{tProductId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="test.domain.TProduct" >
+    insert into t_product (t_product_id, t_product_name, t_product_price, 
+      t_product_num, t_product_picUrl, t_product_indate, 
+      t_product_outdate, t_product_type)
+    values (#{tProductId,jdbcType=VARCHAR}, #{tProductName,jdbcType=VARCHAR}, #{tProductPrice,jdbcType=VARCHAR}, 
+      #{tProductNum,jdbcType=VARCHAR}, #{tProductPicurl,jdbcType=VARCHAR}, #{tProductIndate,jdbcType=VARCHAR}, 
+      #{tProductOutdate,jdbcType=VARCHAR}, #{tProductType,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="test.domain.TProduct" >
+    insert into t_product
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tProductId != null" >
+        t_product_id,
+      </if>
+      <if test="tProductName != null" >
+        t_product_name,
+      </if>
+      <if test="tProductPrice != null" >
+        t_product_price,
+      </if>
+      <if test="tProductNum != null" >
+        t_product_num,
+      </if>
+      <if test="tProductPicurl != null" >
+        t_product_picUrl,
+      </if>
+      <if test="tProductIndate != null" >
+        t_product_indate,
+      </if>
+      <if test="tProductOutdate != null" >
+        t_product_outdate,
+      </if>
+      <if test="tProductType != null" >
+        t_product_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tProductId != null" >
+        #{tProductId,jdbcType=VARCHAR},
+      </if>
+      <if test="tProductName != null" >
+        #{tProductName,jdbcType=VARCHAR},
+      </if>
+      <if test="tProductPrice != null" >
+        #{tProductPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="tProductNum != null" >
+        #{tProductNum,jdbcType=VARCHAR},
+      </if>
+      <if test="tProductPicurl != null" >
+        #{tProductPicurl,jdbcType=VARCHAR},
+      </if>
+      <if test="tProductIndate != null" >
+        #{tProductIndate,jdbcType=VARCHAR},
+      </if>
+      <if test="tProductOutdate != null" >
+        #{tProductOutdate,jdbcType=VARCHAR},
+      </if>
+      <if test="tProductType != null" >
+        #{tProductType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="test.domain.TProduct" >
+    update t_product
+    <set >
+      <if test="tProductName != null" >
+        t_product_name = #{tProductName,jdbcType=VARCHAR},
+      </if>
+      <if test="tProductPrice != null" >
+        t_product_price = #{tProductPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="tProductNum != null" >
+        t_product_num = #{tProductNum,jdbcType=VARCHAR},
+      </if>
+      <if test="tProductPicurl != null" >
+        t_product_picUrl = #{tProductPicurl,jdbcType=VARCHAR},
+      </if>
+      <if test="tProductIndate != null" >
+        t_product_indate = #{tProductIndate,jdbcType=VARCHAR},
+      </if>
+      <if test="tProductOutdate != null" >
+        t_product_outdate = #{tProductOutdate,jdbcType=VARCHAR},
+      </if>
+      <if test="tProductType != null" >
+        t_product_type = #{tProductType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where t_product_id = #{tProductId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="test.domain.TProduct" >
+    update t_product
+    set t_product_name = #{tProductName,jdbcType=VARCHAR},
+      t_product_price = #{tProductPrice,jdbcType=VARCHAR},
+      t_product_num = #{tProductNum,jdbcType=VARCHAR},
+      t_product_picUrl = #{tProductPicurl,jdbcType=VARCHAR},
+      t_product_indate = #{tProductIndate,jdbcType=VARCHAR},
+      t_product_outdate = #{tProductOutdate,jdbcType=VARCHAR},
+      t_product_type = #{tProductType,jdbcType=VARCHAR}
+    where t_product_id = #{tProductId,jdbcType=VARCHAR}
+  </update>
+</mapper>
